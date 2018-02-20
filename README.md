@@ -1,1 +1,0 @@
-# board-zerynth-olimex_esp32gateway
