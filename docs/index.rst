@@ -13,7 +13,7 @@ The Esp32 Gateway device is one of the development board created by Olimex to ev
 Pin Mapping
 ***********
 
-.. figure:: /custom/img/Olimex_ESP32_gateway_pin_comm.jpg
+.. figure:: /custom/img/Olimex_ESP32_gateway_pin_comm.png
    :align: center
    :figwidth: 100% 
    :alt: Olimex Esp32 Gateway
@@ -109,6 +109,12 @@ Start address  Size          Content
 
 For Esp32 based devices, the FOTA process is implemented mostly by using the provided system calls in the IDF framework. The selection of the next VM to be run is therefore a duty of the Espressif bootloader; the bootloader however, does not provide a failsafe mechanism to revert to the previous VM in case the currently selected one fails to start. At the moment this lack of a safety feature can not be circumvented, unless by changing the bootloader. As soon as Espressif relases a new IDF with such feature, we will release updated VMs. 
 
+Secure Firmware
+***************
+
+Secure Firmware feature allows to detect and recover from malfunctions and, when supported, to protect the running firmware (e.g. disabling the external access to flash or assigning protected RAM memory to critical parts of the system).
+
+This feature is strongly platform dependent; more information at :ref:`Secure Firmware - ESP32 section<sfw-esp32>`.
 
 Missing features
 ****************
@@ -116,6 +122,4 @@ Missing features
 Not all IDF features have been included in the Esp32 based VMs. In particular the following are missing but will be added in the near future:
 
     * BLE support
-    * Touch detection support
-    * Real time clock support
-    * Watchdog support (however, global watchdog is active by default)  
+    * Touch detection support 
