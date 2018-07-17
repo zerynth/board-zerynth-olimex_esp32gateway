@@ -13,7 +13,7 @@ The Esp32 Gateway device is one of the development board created by Olimex to ev
 Pin Mapping
 ***********
 
-.. figure:: /custom/img/Olimex_ESP32_gateway_pin_comm.png
+.. figure:: /custom/img/Olimex_ESP32_gateway_pin_comm.jpg
    :align: center
    :figwidth: 100% 
    :alt: Olimex Esp32 Gateway
@@ -44,7 +44,7 @@ Device Summary
 
 * Microcontroller: Tensilica 32-bit Single-/Dual-core CPU Xtensa LX6
 * Operating Voltage: 3.3V
-* Input Voltage: 2.7-5.5V
+* Input Voltage: 5V
 * Digital I/O Pins (DIO): 34
 * Analog Input Pins (ADC): 6
 * UARTs: 2
@@ -63,7 +63,7 @@ Power
 
 Power to the Olimex Esp32 Gateway is supplied via the on-board USB Micro B connector or directly via the “VIN” pin. The power source is selected automatically.
 
-The device can operate on an external supply of 2.7 V to 5.5 V. If using more than 5.5 V, the voltage regulator may overheat and damage the device.
+The device can operate on an external supply of 5V. If using more than 5V, the voltage regulator may overheat and damage the device.
 
 Connect, Register, Virtualize and Program
 *****************************************

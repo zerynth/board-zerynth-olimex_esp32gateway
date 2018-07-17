@@ -22,6 +22,7 @@
     "type":"board",
     "virtualizable":"OlimexEsp32Gateway",
     "has_alter_ego":false,
+    "flash_erasable": true,
     "uplink_reset": "reset",
     "reset_time": 4000,
     "rodata_in_ram":true,
