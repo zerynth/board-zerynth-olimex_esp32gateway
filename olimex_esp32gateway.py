@@ -57,7 +57,40 @@ class OlimexEsp32Gateway(Board):
         return True,out
 
     def erase(self,outfn=None):
-        res,out,err = proc.runcmd("python",tools["esptool32"],"--chip", "esp32","--port",self.port,"--baud","115200","erase_flash",outfn=outfn)
+        res,out,err = proc.runcmd("python",tools["esptool32"],"--chip", "esp32","--port",self.port,"--baud","1500000","erase_flash",outfn=outfn)
+        if res:
+            return False,out
+        return True,out
+
+    def custom_get_chipid(self,method=0,outfn=None):
+        res,out,err = proc.runcmd("python",tools["esptool32"],"--chip", "esp32","--port",self.port,"--baud","115200","--before", "default_reset", "--after", "hard_reset","read_mac",outfn=outfn)
+
+        if res:
+            return None
+        lines=out.split("\n")
+        for line in lines:
+            if line.startswith("MAC: "):
+                smac = line[5:].split(":")
+                mac = ""
+                for m in smac:
+                    mac = mac+m[1]+m[0]
+                return mac
+        return None
+
+    def custom_burn_layout(self,layout,options={},outfn=None):
+        args = []
+        for chunk in layout.chunks():
+            args.append(hex(chunk["loc"]) if not isinstance(chunk["loc"],str) else chunk["loc"])
+            tfile = fs.get_tempfile(chunk["bin"])
+            args.append(tfile)
+        baud = str(options.get("baud",115200))
+        res,out,err = proc.runcmd("python",tools["esptool32"],"--chip", "esp32","--port",self.port,"--baud",baud,"--before", "default_reset", "--after", "hard_reset","write_flash","-z","--flash_freq","40m","--flash_mode","dio","--flash_size","detect",*args,outfn=outfn)
+
+        for arg in args:
+            # cleanup
+            if not arg.startswith("0x"):
+                fs.rm_file(arg)
+
         if res:
             return False,out
         return True,out
