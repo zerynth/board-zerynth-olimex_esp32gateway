@@ -57,7 +57,7 @@ class OlimexEsp32Gateway(Board):
         return True,out
 
     def erase(self,outfn=None):
-        res,out,err = proc.runcmd("python",tools["esptool32"],"--chip", "esp32","--port",self.port,"--baud","1500000","erase_flash",outfn=outfn)
+        res,out,err = proc.runcmd("python",tools["esptool32"],"--chip", "esp32","--port",self.port,"--baud","115200","erase_flash",outfn=outfn)
         if res:
             return False,out
         return True,out
