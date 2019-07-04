@@ -1,0 +1,15 @@
+---
+description: Add support for Olimex Esp32 Gateway
+fullname: board.zerynth.olimex_esp32gateway
+info:
+    board: Olimex Esp32 Gateway
+    chip_manufacturer: Espressif
+    device: esp32
+    family_type: Xtensa lx6
+keywords:
+- espressif
+- esp32
+- board
+- olimex
+title: Olimex Esp32 Gateway Support Package
+...
